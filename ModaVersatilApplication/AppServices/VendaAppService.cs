@@ -29,7 +29,7 @@ namespace ModaVersatilApplication.AppServices
         public async Task AlterarAsync(VendaDTORequest venda)
         {
             var model = _mapper.Map<Venda>(venda);
-
+                        
             await _vendaService.AlterarAsync(model);
         }
 

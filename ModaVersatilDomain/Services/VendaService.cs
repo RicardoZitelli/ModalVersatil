@@ -22,6 +22,13 @@ namespace ModaVersatilDomain.Services
 
         public async Task AlterarAsync(Venda venda)
         {
+            var vendaRealizada = await ObterAsync(venda.Id);
+
+            //Impedir de alterar dados fixos
+            venda.Total = vendaRealizada.Total;
+            venda.ClienteId = vendaRealizada.ClienteId;
+            venda.DataCadastro = vendaRealizada.DataCadastro;
+
             await UnitOfWork.VendaRepository.AlterarAsync(venda);
         }
         

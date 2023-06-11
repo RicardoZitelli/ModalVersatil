@@ -44,7 +44,7 @@ namespace ModaVesatilInfrastructure.Repositories
         {
             var query = $"{BaseInsert}" +
                         " VALUES( " +
-                        @"  @DataCadastro,
+                        @"  GETDATE(),
                             @Total,
                             @CodigoRastreio,
                             @ClienteId,

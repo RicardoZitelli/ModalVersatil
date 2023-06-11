@@ -32,12 +32,17 @@ namespace ModaVersatilIoC
         public void ConfigurarDependencias()
         {
             _services.AddSingleton(x => _configuration);
-            _services.AddScoped<IDbConnection>(db => new SqlConnection(new DbConnectionFactory(_configuration).ObterStringDeConexao()));
+            _services.AddScoped<IDbConnection>(db =>
+                new SqlConnection(
+                    new DbConnectionFactory(_configuration)
+                        .ObterStringDeConexao()));
 
             ConfigurarMapper();
-            
+
             ConfigurarAppService();
+
             ConfigurarServices();
+
             ConfigurarRepositories();
         }
 
@@ -75,9 +80,8 @@ namespace ModaVersatilIoC
             _services.AddScoped<IClienteRepository, ClienteRepository>();
             _services.AddScoped<ICarrinhoRepository, CarrinhoRepository>();
             _services.AddScoped<IVendaRepository, VendaRepository>();
-            
+
             _services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
-
-    }  
+    }
 }
