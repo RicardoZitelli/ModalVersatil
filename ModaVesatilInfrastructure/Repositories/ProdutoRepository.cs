@@ -2,12 +2,7 @@
 using ModaVersatilDomain.Interfaces.Repositories;
 using ModaVersatilDomain.Models;
 using ModaVesatilInfrastructure.Repositories.Core;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ModaVesatilInfrastructure.Repositories
 {

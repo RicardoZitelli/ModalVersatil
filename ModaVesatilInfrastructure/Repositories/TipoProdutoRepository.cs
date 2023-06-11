@@ -1,14 +1,8 @@
 ﻿using ModaVersatilDomain.Interfaces.Repositories;
 using ModaVersatilDomain.Models;
 using ModaVesatilInfrastructure.Repositories.Core;
-using System;
-using System.Collections.Generic;
 using Dapper;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
 
 namespace ModaVesatilInfrastructure.Repositories
 {
