@@ -1,11 +1,24 @@
+using ModaVersatilIoC;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+
+IConfiguration configuration = new ConfigurationBuilder()
+        .SetBasePath(Directory.GetCurrentDirectory())
+        .AddJsonFile(Path.Combine(AppContext.BaseDirectory, "appsettings.json"), false)
+        .Build();
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+builder.Services.AddSwaggerGen(c =>
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "ModaVersatilWebAPI", Version = "v1" })
+);
+    
+new InjetorDependencia(builder.Services, configuration);
 
 var app = builder.Build();
 
