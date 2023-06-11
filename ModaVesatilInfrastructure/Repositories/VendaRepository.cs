@@ -60,13 +60,6 @@ namespace ModaVesatilInfrastructure.Repositories
             await Connection.ExecuteAsync(query, venda);
         }
 
-        public async Task ExcluirAsync(int id)
-        {
-            var query = @"DELETE FROM Vendas WHERE Id = @Id";
-
-            await Connection.ExecuteAsync(query, new { Id = id });
-        }
-
         public async Task<IEnumerable<Venda>> ListarAsync()
         {
             var query = BaseQuery;

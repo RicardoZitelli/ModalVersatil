@@ -14,6 +14,10 @@ namespace ModaVersatilApplication.AutoMapper
         public ModelToDtoMappingProfile()
         {
             CreateMap<TipoProduto, TipoProdutoDTOResponse>();
+            CreateMap<Produto, ProdutoDTOResponse>();
+            CreateMap<Cliente, ClienteDTOResponse>();
+            CreateMap<Carrinho, CarrinhoDTOResponse>();
+            CreateMap<Venda, VendaDTOResponse>();
         }
 
     }

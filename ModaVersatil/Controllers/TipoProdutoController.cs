@@ -34,15 +34,15 @@ namespace ModaVersatil.Controllers
         }
 
         [HttpDelete("/ExcluirTipoProduto")]
-        public async Task ExcluirTipoProduto([FromBody] int id)
+        public async Task ExcluirTipoProduto([FromHeader] int id)
         {
             await _tipoProdutoAppService.ExcluirAsync(id);
 
             _logger.LogInformation($"Categoria Tipo de Produto {id} excluído.");
         }
 
-        [HttpPost("/ObterTipoProduto")]
-        public async Task<TipoProdutoDTOResponse> ObterTipoProduto([FromBody] int id)
+        [HttpGet("/ObterTipoProduto")]
+        public async Task<TipoProdutoDTOResponse> ObterTipoProduto([FromHeader] int id)
         {
             return await _tipoProdutoAppService.ObterAsync(id);
         }

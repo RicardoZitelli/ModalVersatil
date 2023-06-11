@@ -1,19 +1,13 @@
 ﻿using ModaVersatilDomain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ModaVersatilDomain.Interfaces.Repositories
+namespace ModaVersatilDomain.Interfaces.Services
 {
-    public interface IVendaRepository
+    public interface IVendaService
     {
         Task AdicionarAsync(Venda venda);
         Task AlterarAsync(Venda venda);        
         Task<Venda> ObterAsync(int id);
         Task<IEnumerable<Venda>> ListarAsync();
-        
         Task<IEnumerable<Venda>> ListarPorClienteAsync(int clienteId);
         Task<IEnumerable<Venda>> ListarPorPeriodoAsync(DateTime dataInicio, DateTime dataFim);
     }

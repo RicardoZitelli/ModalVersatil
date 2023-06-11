@@ -53,11 +53,19 @@ namespace ModaVersatilIoC
         public void ConfigurarAppService()
         {
             _services.AddScoped<ITipoProdutoAppService, TipoProdutoAppService>();
+            _services.AddScoped<IProdutoAppService, ProdutoAppService>();
+            _services.AddScoped<IClienteAppService, ClienteAppService>();
+            _services.AddScoped<ICarrinhoAppService, CarrinhoAppService>();
+            _services.AddScoped<IVendaAppService, VendaAppService>();
         }
 
         private void ConfigurarServices()
         {
             _services.AddScoped<ITipoProdutoService, TipoProdutoService>();
+            _services.AddScoped<IProdutoService, ProdutoService>();
+            _services.AddScoped<IClienteService, ClienteService>();
+            _services.AddScoped<ICarrinhoService, CarrinhoService>();
+            _services.AddScoped<IVendaService, VendaService>();
         }
 
         public void ConfigurarRepositories()

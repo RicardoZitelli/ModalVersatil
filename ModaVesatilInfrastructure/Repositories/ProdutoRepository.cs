@@ -27,7 +27,7 @@ namespace ModaVesatilInfrastructure.Repositories
                                                         ATIVO
                                                     ) ";
 
-        protected readonly string BaseUpdate = @"UPDATE TipoProdutos 
+        protected readonly string BaseUpdate = @"UPDATE Produtos 
                                                 SET     TIPOPRODUTOID = @TipoProdutoId,
                                                         DESCRICAO = @Descricao,
                                                         CONTEUDO = @Conteudo,
@@ -37,7 +37,7 @@ namespace ModaVesatilInfrastructure.Repositories
                                                         ATIVO = @Ativo
                                                 WHERE   ID = @Id ";
 
-        protected readonly string BaseDelete = @"DELETE FROM TipoProdutos 
+        protected readonly string BaseDelete = @"DELETE FROM Produtos 
                                                 WHERE   ID = @Id ";
 
         public ProdutoRepository(IDbConnection connection) : base(connection)
@@ -48,11 +48,13 @@ namespace ModaVesatilInfrastructure.Repositories
         {
             var query = $"{BaseInsert}" +
                        " VALUES( " +
-                       @"   @Descricao,
+                       @"   @TipoProdutoId,
+                            @Descricao,
                             @Conteudo,
                             @ValorCompra,
                             @ValorVenda,
-                            @Quantidade)";
+                            @Quantidade,
+                            @Ativo)";
 
             await Connection.ExecuteAsync(query, produto);
         }

@@ -4,11 +4,6 @@ using ModaVersatilApplication.DTOs.Response;
 using ModaVersatilApplication.Interfaces;
 using ModaVersatilDomain.Interfaces.Services;
 using ModaVersatilDomain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ModaVersatilApplication.AppServices
 {
@@ -44,16 +39,12 @@ namespace ModaVersatilApplication.AppServices
 
         public async Task<IEnumerable<TipoProdutoDTOResponse>> ListarAsync()
         {
-            var dtos = _mapper.Map<IEnumerable<TipoProdutoDTOResponse>>(await _tipoProdutoService.ListarAsync());
-                        
-            return dtos;
+            return _mapper.Map<IEnumerable<TipoProdutoDTOResponse>>(await _tipoProdutoService.ListarAsync());
         }
 
         public async Task<TipoProdutoDTOResponse> ObterAsync(int id)
         {
-            var dtos = _mapper.Map<TipoProdutoDTOResponse>(await _tipoProdutoService.ObterAsync(id));
-
-            return dtos;
+            return _mapper.Map<TipoProdutoDTOResponse>(await _tipoProdutoService.ObterAsync(id));
         }
     }
 }
