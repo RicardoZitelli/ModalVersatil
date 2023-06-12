@@ -17,38 +17,38 @@ namespace ModaVersatil.Controllers
             _tipoProdutoAppService = tipoProdutoAppService;
         }
 
-        [HttpPost("/AdicionarTipoProduto")]
-        public async Task AdicionarTipoProduto([FromBody] TipoProdutoDTORequest tipoProdutoDTORequest)
+        [HttpPost("/AdicionarTipoProdutoAsync")]
+        public async Task AdicionarTipoProdutoAsync([FromBody] TipoProdutoDTORequest tipoProdutoDTORequest)
         {
             await _tipoProdutoAppService.AdicionarAsync(tipoProdutoDTORequest);
             
             _logger.LogInformation("Categoria Tipo de Produto adicionado.");
         }
 
-        [HttpPut("/AlterarTipoProduto")]
-        public async Task AlterarTipoProduto([FromBody] TipoProdutoDTORequest tipoProdutoDTORequest)
+        [HttpPut("/AlterarTipoProdutoAsync")]
+        public async Task AlterarTipoProdutoAsync([FromBody] TipoProdutoDTORequest tipoProdutoDTORequest)
         {
             await _tipoProdutoAppService.AlterarAsync(tipoProdutoDTORequest);
 
             _logger.LogInformation($"Categoria Tipo de Produto {tipoProdutoDTORequest.Id} alterado.");
         }
 
-        [HttpDelete("/ExcluirTipoProduto")]
-        public async Task ExcluirTipoProduto([FromHeader] int id)
+        [HttpDelete("/ExcluirTipoProdutoAsync")]
+        public async Task ExcluirTipoProdutoAsync([FromHeader] int id)
         {
             await _tipoProdutoAppService.ExcluirAsync(id);
 
             _logger.LogInformation($"Categoria Tipo de Produto {id} excluído.");
         }
 
-        [HttpGet("/ObterTipoProduto")]
-        public async Task<TipoProdutoDTOResponse> ObterTipoProduto([FromHeader] int id)
+        [HttpGet("/ObterTipoProdutoAsync")]
+        public async Task<TipoProdutoDTOResponse> ObterTipoProdutoAsync([FromHeader] int id)
         {
             return await _tipoProdutoAppService.ObterAsync(id);
         }
 
-        [HttpGet("/ListarTipoProduto")]
-        public async Task<IEnumerable<TipoProdutoDTOResponse>> ListarTipoProduto()
+        [HttpGet("/ListarTipoProdutoAsync")]
+        public async Task<IEnumerable<TipoProdutoDTOResponse>> ListarTipoProdutoAsync()
         {
             return await _tipoProdutoAppService.ListarAsync();
         }

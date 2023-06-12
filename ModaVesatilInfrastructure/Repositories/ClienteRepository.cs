@@ -18,12 +18,17 @@ namespace ModaVesatilInfrastructure.Repositories
                                                 WHERE   ATIVO = @Ativo ";
 
         protected readonly string BaseInsert = @"INSERT INTO Clientes (
-                                                        TIPOPRODUTOID,
-                                                        DESCRICAO,
-                                                        CONTEUDO,
-                                                        VALORCOMPRA,
-                                                        VALORVENDA,
-                                                        QUANTIDADE,
+                                                        NOME,
+                                                        CPF,
+                                                        ENDERECO,
+                                                        NUMERO,
+                                                        CEP,
+                                                        CIDADE,
+                                                        ESTADO,
+                                                        EMAIL,
+                                                        DATACADASTRO,
+                                                        USUARIO,
+                                                        SENHA,
                                                         ATIVO
                                                     ) ";
 

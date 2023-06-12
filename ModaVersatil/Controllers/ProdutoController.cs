@@ -18,38 +18,38 @@ namespace ModaVersatil.Controllers
             _produtoAppService = produtoAppService;
         }
 
-        [HttpPost("/AdicionarProduto")]
-        public async Task AdicionarProduto([FromBody] ProdutoDTORequest tipoProdutoDTORequest)
+        [HttpPost("/AdicionarProdutoAsync")]
+        public async Task AdicionarProdutoAsync([FromBody] ProdutoDTORequest tipoProdutoDTORequest)
         {
             await _produtoAppService.AdicionarAsync(tipoProdutoDTORequest);
 
             _logger.LogInformation("Produto adicionado.");
         }
 
-        [HttpPut("/AlterarProduto")]
-        public async Task AlterarProduto([FromBody] ProdutoDTORequest tipoProdutoDTORequest)
+        [HttpPut("/AlterarProdutoAsync")]
+        public async Task AlterarProdutoAsync([FromBody] ProdutoDTORequest tipoProdutoDTORequest)
         {
             await _produtoAppService.AlterarAsync(tipoProdutoDTORequest);
 
             _logger.LogInformation("Produto alterado.");
         }
 
-        [HttpDelete("/ExcluirProduto")]
-        public async Task ExcluirProduto([FromHeader] int id)
+        [HttpDelete("/ExcluirProdutoAsync")]
+        public async Task ExcluirProdutoAsync([FromHeader] int id)
         {
             await _produtoAppService.ExcluirAsync(id);
 
             _logger.LogInformation("Produto excluído.");
         }
 
-        [HttpGet("/ObterProduto")]
-        public async Task<ProdutoDTOResponse> ObterProduto([FromHeader] int id)
+        [HttpGet("/ObterProdutoAsync")]
+        public async Task<ProdutoDTOResponse> ObterProdutoAsync([FromHeader] int id)
         {
             return await _produtoAppService.ObterAsync(id);            
         }
 
-        [HttpGet("/ListarProduto")]
-        public async Task<IEnumerable<ProdutoDTOResponse>> ListarProduto()
+        [HttpGet("/ListarProdutoAsync")]
+        public async Task<IEnumerable<ProdutoDTOResponse>> ListarProdutoAsync()
         {
             return await _produtoAppService.ListarAsync();
         }
