@@ -20,9 +20,17 @@ namespace ModaVersatilApplication.AppServices
 
         public async Task AdicionarAsync(ClienteDTORequest cliente)
         {
-            var model = _mapper.Map<Cliente>(cliente);
+            try
+            {
+                var model = _mapper.Map<Cliente>(cliente);
 
-            await _clienteService.AdicionarAsync(model);
+                await _clienteService.AdicionarAsync(model);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }            
         }
 
         public async Task AlterarAsync(ClienteDTORequest cliente)

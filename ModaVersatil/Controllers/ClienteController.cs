@@ -19,11 +19,22 @@ namespace ModaVersatil.Controllers
         }
 
         [HttpPost("/AdicionarClienteAsync")]
-        public async Task AdicionarClienteAsync(ClienteDTORequest cliente)
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> AdicionarClienteAsync(ClienteDTORequest cliente)
         {
-            await _clienteAppService.AdicionarAsync(cliente);
+            try
+            {
+                await _clienteAppService.AdicionarAsync(cliente);
 
-            _logger.LogInformation("Cliente adicionado");
+                _logger.LogInformation("Cliente adicionado");
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+               return BadRequest(ex.Message);                
+            }
+           
         }
 
         [HttpPut("/AlterarClienteAsync")]

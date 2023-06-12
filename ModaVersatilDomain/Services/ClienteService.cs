@@ -13,7 +13,20 @@ namespace ModaVersatilDomain.Services
 
         public async Task AdicionarAsync(Cliente cliente)
         {
-            await UnitOfWork.ClienteRepository.AdicionarAsync(cliente);
+            try
+            {
+                var clientesCadastrados = await UnitOfWork.ClienteRepository.ListarAsync();
+
+                if (clientesCadastrados.Count(x => x.Usuario == cliente.Usuario) > 0)
+                    throw new Exception("Usuário já está em uso");
+
+                await UnitOfWork.ClienteRepository.AdicionarAsync(cliente);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }            
         }
 
         public async Task AlterarAsync(Cliente cliente)

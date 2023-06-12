@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModaVersatil", "ModaVersatil\ModaVersatil.csproj", "{2AD71514-1353-4ADC-9E5D-65095149FBB4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Services", "01-Services", "{ABE10E3C-7C08-4D15-A5CB-0B34FBF947C6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-ServicesAPI", "01-ServicesAPI", "{ABE10E3C-7C08-4D15-A5CB-0B34FBF947C6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-Application", "02-Application", "{C2FAA182-358E-476C-9BA7-6B41713F8E72}"
 EndProject
@@ -17,9 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModaVersatilApplication", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModaVersatilDomain", "ModaVersatilDomain\ModaVersatilDomain.csproj", "{8E764975-818B-4058-BCA9-D37D74D8348B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModaVesatilInfrastructure", "ModaVesatilInfrastructure\ModaVesatilInfrastructure.csproj", "{43AF013A-ACF0-4C9D-8391-BAE9C383AC4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModaVesatilInfrastructure", "ModaVesatilInfrastructure\ModaVesatilInfrastructure.csproj", "{43AF013A-ACF0-4C9D-8391-BAE9C383AC4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModaVersatilIoC", "ModaVersatilIoC\ModaVersatilIoC.csproj", "{2CE1FDE1-D6A1-4A32-BA6A-E96A3C3B1D4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModaVersatilIoC", "ModaVersatilIoC\ModaVersatilIoC.csproj", "{2CE1FDE1-D6A1-4A32-BA6A-E96A3C3B1D4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
