@@ -20,6 +20,7 @@ namespace ModaVersatil.Controllers
 
         [HttpPost("/AdicionarClienteAsync")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> AdicionarClienteAsync(ClienteDTORequest cliente)
         {
             try
@@ -32,42 +33,94 @@ namespace ModaVersatil.Controllers
             }
             catch (Exception ex)
             {
-               return BadRequest(ex.Message);                
+                _logger.LogCritical($"Erro catastrófico:. {JsonConvert.SerializeObject(ex.Message)}");
+
+                return BadRequest(ex.Message);                
             }
            
         }
 
         [HttpPut("/AlterarClienteAsync")]
-        public async Task AlterarClienteAsync(ClienteDTORequest cliente)
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> AlterarClienteAsync(ClienteDTORequest cliente)
         {
-            await _clienteAppService.AlterarAsync(cliente);
+            try
+            {
+                await _clienteAppService.AlterarAsync(cliente);
 
-            _logger.LogInformation("Cliente alterado");
+                _logger.LogInformation("Cliente alterado");
+                
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogCritical($"Erro catastrófico:. {JsonConvert.SerializeObject(ex.Message)}");
+
+                return BadRequest(ex.Message);
+            }
+            
         }
 
         [HttpDelete("/ExcluirClienteAsync")]
-        public async Task ExcluirClienteAsync(int id)
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> ExcluirClienteAsync(int id)
         {
-            var cliente = await _clienteAppService.ObterAsync(id);
+            try
+            {
+                var cliente = await _clienteAppService.ObterAsync(id);
 
-            if (cliente == null)
-                _logger.LogInformation($"Cliente não encontrado. Id: {id}");
-            
-            await _clienteAppService.ExcluirAsync(id);
-            
-            _logger.LogInformation($"Cliente excluído. {JsonConvert.SerializeObject(cliente)}");                
+                if (cliente == null)
+                    _logger.LogInformation($"Cliente não encontrado. Id: {id}");
+
+                await _clienteAppService.ExcluirAsync(id);
+
+                _logger.LogInformation($"Cliente excluído. {JsonConvert.SerializeObject(cliente)}");
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogCritical($"Erro catastrófico:. {JsonConvert.SerializeObject(ex.Message)}");
+
+                return BadRequest(ex.Message);
+            }
+                        
         }
 
         [HttpGet("/ObterClienteAsync")]
-        public async Task<ClienteDTOResponse> ObterClienteAsync(int id)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<ClienteDTOResponse>> ObterClienteAsync(int id)
         {
-            return await _clienteAppService.ObterAsync(id);
+            try
+            {
+                return Ok(JsonConvert.SerializeObject(await _clienteAppService.ObterAsync(id)));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogCritical($"Erro catastrófico:. {JsonConvert.SerializeObject(ex.Message)}");
+
+                return BadRequest(ex.Message); 
+            }
+           
         }
 
         [HttpGet("/ListarClienteAsync")]
-        public async Task<IEnumerable<ClienteDTOResponse>> ListarClienteAsync()
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<ClienteDTOResponse>>> ListarClienteAsync()
         {
-            return await _clienteAppService.ListarAsync();
-        }
+            try
+            {
+                return Ok(JsonConvert.SerializeObject(await _clienteAppService.ListarAsync()));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogCritical($"Erro catastrófico:. {JsonConvert.SerializeObject(ex.Message)}");
+
+                return BadRequest(ex.Message);
+            }                    }
     }
 }
