@@ -18,9 +18,11 @@ namespace ModaVersatil.Controllers
             _clienteAppService = clienteAppService;
         }
 
-        [HttpPost("/AdicionarClienteAsync")]
+        [HttpPost]
+        [Route("AdicionarClienteAsync")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> AdicionarClienteAsync(ClienteDTORequest cliente)
         {
             try
@@ -40,10 +42,12 @@ namespace ModaVersatil.Controllers
            
         }
 
-        [HttpPut("/AlterarClienteAsync")]
+        [HttpPut]
+        [Route("AlterarClienteAsync")]       
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> AlterarClienteAsync(ClienteDTORequest cliente)
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> AlterarClienteAsync([FromBody] ClienteDTORequest cliente)
         {
             try
             {
@@ -62,10 +66,12 @@ namespace ModaVersatil.Controllers
             
         }
 
-        [HttpDelete("/ExcluirClienteAsync")]
+        [HttpDelete]
+        [Route("ExcluirClienteAsync/{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> ExcluirClienteAsync(int id)
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> ExcluirClienteAsync([FromRoute]int id)
         {
             try
             {
@@ -89,10 +95,12 @@ namespace ModaVersatil.Controllers
                         
         }
 
-        [HttpGet("/ObterClienteAsync")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [HttpGet]
+        [Route("ObterClienteAsync/{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<ClienteDTOResponse>> ObterClienteAsync(int id)
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<ClienteDTOResponse>> ObterClienteAsync([FromRoute] int id)
         {
             try
             {
@@ -100,16 +108,18 @@ namespace ModaVersatil.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogCritical($"Erro catastrófico:. {JsonConvert.SerializeObject(ex.Message)}");
+                _logger.LogCritical($"Erro catastrófico: {JsonConvert.SerializeObject(ex.Message)}");
 
                 return BadRequest(ex.Message); 
             }
            
         }
 
-        [HttpGet("/ListarClienteAsync")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [HttpGet]
+        [Route("ListarClienteAsync")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<IEnumerable<ClienteDTOResponse>>> ListarClienteAsync()
         {
             try

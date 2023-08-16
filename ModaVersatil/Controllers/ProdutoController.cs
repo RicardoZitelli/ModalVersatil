@@ -20,9 +20,9 @@ namespace ModaVersatil.Controllers
 
         [HttpPost]
         [Route("AdicionarProdutoAsync")]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(500)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task AdicionarProdutoAsync([FromBody] ProdutoDTORequest tipoProdutoDTORequest)
         {
             await _produtoAppService.AdicionarAsync(tipoProdutoDTORequest);
@@ -32,9 +32,9 @@ namespace ModaVersatil.Controllers
 
         [HttpPut]
         [Route("AlterarProdutoAsync")]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(500)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task AlterarProdutoAsync([FromBody] ProdutoDTORequest tipoProdutoDTORequest)
         {
             await _produtoAppService.AlterarAsync(tipoProdutoDTORequest);
@@ -44,9 +44,9 @@ namespace ModaVersatil.Controllers
 
         [HttpDelete]
         [Route("ExcluirProdutoAsync")]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(500)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task ExcluirProdutoAsync([FromHeader] int id)
         {
             await _produtoAppService.ExcluirAsync(id);
@@ -56,9 +56,9 @@ namespace ModaVersatil.Controllers
 
         [HttpGet]
         [Route("ObterProdutoAsync")]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(500)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ProdutoDTOResponse> ObterProdutoAsync([FromHeader] int id)
         {
             return await _produtoAppService.ObterAsync(id);            
@@ -66,9 +66,9 @@ namespace ModaVersatil.Controllers
 
         [HttpGet]
         [Route("ListarProdutoAsync")]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(500)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IEnumerable<ProdutoDTOResponse>> ListarProdutoAsync()
         {
             return await _produtoAppService.ListarAsync();

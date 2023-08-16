@@ -17,7 +17,11 @@ namespace ModaVersatil.Controllers
             _tipoProdutoAppService = tipoProdutoAppService;
         }
 
-        [HttpPost("/AdicionarTipoProdutoAsync")]
+        [HttpPost]
+        [Route("AdicionarTipoProdutoAsync")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task AdicionarTipoProdutoAsync([FromBody] TipoProdutoDTORequest tipoProdutoDTORequest)
         {
             await _tipoProdutoAppService.AdicionarAsync(tipoProdutoDTORequest);
@@ -25,7 +29,11 @@ namespace ModaVersatil.Controllers
             _logger.LogInformation("Categoria Tipo de Produto adicionado.");
         }
 
-        [HttpPut("/AlterarTipoProdutoAsync")]
+        [HttpPut]
+        [Route("AlterarTipoProdutoAsync")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task AlterarTipoProdutoAsync([FromBody] TipoProdutoDTORequest tipoProdutoDTORequest)
         {
             await _tipoProdutoAppService.AlterarAsync(tipoProdutoDTORequest);
@@ -33,7 +41,11 @@ namespace ModaVersatil.Controllers
             _logger.LogInformation($"Categoria Tipo de Produto {tipoProdutoDTORequest.Id} alterado.");
         }
 
-        [HttpDelete("/ExcluirTipoProdutoAsync")]
+        [HttpDelete]
+        [Route("ExcluirTipoProdutoAsync")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task ExcluirTipoProdutoAsync([FromHeader] int id)
         {
             await _tipoProdutoAppService.ExcluirAsync(id);
@@ -41,13 +53,21 @@ namespace ModaVersatil.Controllers
             _logger.LogInformation($"Categoria Tipo de Produto {id} excluído.");
         }
 
-        [HttpGet("/ObterTipoProdutoAsync")]
+        [HttpGet]
+        [Route("ObterTipoProdutoAsync")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<TipoProdutoDTOResponse> ObterTipoProdutoAsync([FromHeader] int id)
         {
             return await _tipoProdutoAppService.ObterAsync(id);
         }
 
-        [HttpGet("/ListarTipoProdutoAsync")]
+        [HttpGet]
+        [Route("ListarTipoProdutoAsync")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IEnumerable<TipoProdutoDTOResponse>> ListarTipoProdutoAsync()
         {
             return await _tipoProdutoAppService.ListarAsync();
