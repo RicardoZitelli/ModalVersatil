@@ -20,9 +20,9 @@ namespace ModaVersatil.Controllers
 
         [HttpPost]
         [Route("AdicionarProdutoCarrinhoAsync")]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(500)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task AdicionarProdutoAsync([FromBody] CarrinhoDTORequest carrinhoDTORequest)
         {
             await _carrinhoAppService.AdicionarAsync(carrinhoDTORequest);
@@ -32,9 +32,9 @@ namespace ModaVersatil.Controllers
 
         [HttpDelete]
         [Route("ExcluirProdutoCarrinhoAsync/{clienteId}/{produtoId}")]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(500)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task ExcluirProdutoCarrinhoAsync([FromRoute] int clienteId, int produtoId)
         {
             await _carrinhoAppService.ExcluirProdutoAsync(clienteId, produtoId);
@@ -44,9 +44,9 @@ namespace ModaVersatil.Controllers
 
         [HttpGet]
         [Route("ListarProdutosCarrinhoAsync/{clienteId}")]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(500)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IEnumerable<CarrinhoDTOResponse>> ListarProdutosPorClienteAsync([FromRoute] int clienteId)
         {
             return await _carrinhoAppService.ListarPorClienteAsync(clienteId);                        

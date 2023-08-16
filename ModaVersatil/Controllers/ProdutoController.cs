@@ -43,11 +43,11 @@ namespace ModaVersatil.Controllers
         }
 
         [HttpDelete]
-        [Route("ExcluirProdutoAsync")]
+        [Route("ExcluirProdutoAsync/{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task ExcluirProdutoAsync([FromHeader] int id)
+        public async Task ExcluirProdutoAsync([FromRoute] int id)
         {
             await _produtoAppService.ExcluirAsync(id);
 
@@ -55,11 +55,11 @@ namespace ModaVersatil.Controllers
         }
 
         [HttpGet]
-        [Route("ObterProdutoAsync")]
+        [Route("ObterProdutoAsync/{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ProdutoDTOResponse> ObterProdutoAsync([FromHeader] int id)
+        public async Task<ProdutoDTOResponse> ObterProdutoAsync([FromRoute] int id)
         {
             return await _produtoAppService.ObterAsync(id);            
         }
