@@ -7,7 +7,7 @@ namespace ModaVersatil.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ProdutoController : Controller
+    public class ProdutoController : ControllerBase
     {
         private readonly ILogger<ProdutoController> _logger;
         private readonly IProdutoAppService _produtoAppService;
@@ -18,7 +18,11 @@ namespace ModaVersatil.Controllers
             _produtoAppService = produtoAppService;
         }
 
-        [HttpPost("/AdicionarProdutoAsync")]
+        [HttpPost]
+        [Route("AdicionarProdutoAsync")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(500)]
         public async Task AdicionarProdutoAsync([FromBody] ProdutoDTORequest tipoProdutoDTORequest)
         {
             await _produtoAppService.AdicionarAsync(tipoProdutoDTORequest);
@@ -26,7 +30,11 @@ namespace ModaVersatil.Controllers
             _logger.LogInformation("Produto adicionado.");
         }
 
-        [HttpPut("/AlterarProdutoAsync")]
+        [HttpPut]
+        [Route("AlterarProdutoAsync")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(500)]
         public async Task AlterarProdutoAsync([FromBody] ProdutoDTORequest tipoProdutoDTORequest)
         {
             await _produtoAppService.AlterarAsync(tipoProdutoDTORequest);
@@ -34,7 +42,11 @@ namespace ModaVersatil.Controllers
             _logger.LogInformation("Produto alterado.");
         }
 
-        [HttpDelete("/ExcluirProdutoAsync")]
+        [HttpDelete]
+        [Route("ExcluirProdutoAsync")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(500)]
         public async Task ExcluirProdutoAsync([FromHeader] int id)
         {
             await _produtoAppService.ExcluirAsync(id);
@@ -42,13 +54,21 @@ namespace ModaVersatil.Controllers
             _logger.LogInformation("Produto excluído.");
         }
 
-        [HttpGet("/ObterProdutoAsync")]
+        [HttpGet]
+        [Route("ObterProdutoAsync")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(500)]
         public async Task<ProdutoDTOResponse> ObterProdutoAsync([FromHeader] int id)
         {
             return await _produtoAppService.ObterAsync(id);            
         }
 
-        [HttpGet("/ListarProdutoAsync")]
+        [HttpGet]
+        [Route("ListarProdutoAsync")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(500)]
         public async Task<IEnumerable<ProdutoDTOResponse>> ListarProdutoAsync()
         {
             return await _produtoAppService.ListarAsync();

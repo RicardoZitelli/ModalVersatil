@@ -37,6 +37,11 @@ namespace ModaVersatilApplication.AppServices
             await _carrinhoService.ExcluirAsync(id);
         }
 
+        public async Task ExcluirProdutoAsync(int clienteId, int produtoId)
+        {
+            await _carrinhoService.ExcluirProdutoAsync(clienteId, produtoId);
+        }
+
         public async Task<IEnumerable<CarrinhoDTOResponse>> ListarAsync()
         {
             return _mapper.Map<IEnumerable<CarrinhoDTOResponse>>(await _carrinhoService.ListarAsync());
@@ -45,6 +50,11 @@ namespace ModaVersatilApplication.AppServices
         public async Task<CarrinhoDTOResponse> ObterAsync(int id)
         {
             return _mapper.Map<CarrinhoDTOResponse>(await _carrinhoService.ObterAsync(id));
+        }
+
+        public async Task<IEnumerable<CarrinhoDTOResponse>> ListarPorClienteAsync(int clienteId)
+        {
+            return _mapper.Map<IEnumerable<CarrinhoDTOResponse>>(await _carrinhoService.ListarPorClienteAsync(clienteId));
         }
     }
 }

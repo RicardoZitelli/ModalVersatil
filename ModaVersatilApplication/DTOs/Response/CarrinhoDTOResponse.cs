@@ -16,7 +16,7 @@
 
         public DateTime DataCadastro { get; set; }
 
-        public int VendaId { get; set; }
+        public int? VendaId { get; set; }
 
         public string? ClienteTemporarioId { get; set; }
     }

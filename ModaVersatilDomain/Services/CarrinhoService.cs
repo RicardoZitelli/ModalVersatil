@@ -26,6 +26,12 @@ namespace ModaVersatilDomain.Services
             await UnitOfWork.CarrinhoRepository.ExcluirAsync(id);
         }
 
+        public async Task ExcluirProdutoAsync(int clienteId, int produtoId)
+        {
+            await UnitOfWork.CarrinhoRepository.ExcluirProdutoAsync(clienteId, produtoId);
+        }
+        
+
         public async Task<IEnumerable<Carrinho>> ListarAsync()
         {
             return await UnitOfWork.CarrinhoRepository.ListarAsync();
@@ -35,5 +41,11 @@ namespace ModaVersatilDomain.Services
         {
             return await UnitOfWork.CarrinhoRepository.ObterAsync(id);
         }
+
+        public async Task<IEnumerable<Carrinho>> ListarPorClienteAsync(int clienteId)
+        {
+            return await UnitOfWork.CarrinhoRepository.ListarPorClienteAsync(clienteId);
+        }
+
     }
 }

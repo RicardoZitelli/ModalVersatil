@@ -69,11 +69,18 @@ namespace ModaVesatilInfrastructure.Repositories
             await Connection.ExecuteAsync(query, carrinho);
         }
 
-        public async Task ExcluirAsync(int id)
+        public async Task ExcluirAsync(int clienteId)
         {
-            var query = @"DELETE FROM Clientes WHERE Id = @Id";
+            var query = @"DELETE FROM Clientes WHERE ClienteId = @ClienteId";
 
-            await Connection.ExecuteAsync(query, id);
+            await Connection.ExecuteAsync(query, new { ClienteId = clienteId });
+        }
+
+        public async Task ExcluirProdutoAsync(int clienteId, int produtoId)
+        {
+            var query = @"DELETE FROM Clientes WHERE ClienteId = @ClienteId AND ProdutoId = @produtoId";
+
+            await Connection.ExecuteAsync(query, new { ClienteId = clienteId, ProdutoId = produtoId });
         }
 
         public async Task<IEnumerable<Carrinho>> ListarAsync()
@@ -86,15 +93,15 @@ namespace ModaVesatilInfrastructure.Repositories
         public async Task<Carrinho> ObterAsync(int id)
         {
             var query = $"{BaseQuery}" +
-                        " WHERE ID = @Id";
+                        " WHERE Id = @Id";
 
             return await Connection.QueryFirstOrDefaultAsync<Carrinho>(query, new { Id = id });
         }
 
-        public async Task<IEnumerable<Carrinho>> ListarPorClienteIdAsync(int clienteId)
+        public async Task<IEnumerable<Carrinho>> ListarPorClienteAsync(int clienteId)
         {
             var query = $"{BaseQuery}" +
-                        " WHERE CLIENTEID = @ClienteId";
+                        " WHERE ClienteId = @ClienteId";
 
             return await Connection.QueryAsync<Carrinho>(query, new { ClienteId = clienteId });
         }
