@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ModaVersatilApplication.DTOs.Request;
+using ModaVersatilApplication.DTOs.Response;
 using ModaVersatilDomain.Models;
 
 namespace ModaVersatilApplication.AutoMapper
@@ -12,7 +13,9 @@ namespace ModaVersatilApplication.AutoMapper
             CreateMap<ProdutoDTORequest, Produto>();
             CreateMap<ClienteDTORequest, Cliente>();
             CreateMap<CarrinhoDTORequest, Carrinho>();
+            CreateMap<CarrinhoDTOResponse, Carrinho>();
             CreateMap<VendaDTORequest, Venda>();
+            
         }
     }
 }

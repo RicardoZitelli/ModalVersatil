@@ -11,7 +11,7 @@
 
         public int Quantidade { get; set; }
 
-        public float ValorVenda { get; set; }
+        public float ValorUnitario { get; set; }
         
         public float Total { get; set; }
 

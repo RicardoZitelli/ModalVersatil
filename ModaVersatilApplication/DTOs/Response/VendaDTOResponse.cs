@@ -11,6 +11,6 @@
         public string? CodigoRastreio { get; set; }
 
         public int ClienteId { get; set; }
-        public bool Estornado { get; set; }
+        public bool? Estornado { get; set; }
     }
 }

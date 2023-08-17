@@ -1,16 +1,18 @@
-﻿namespace ModaVersatilApplication.DTOs.Request
+﻿using ModaVersatilApplication.DTOs.Response;
+
+namespace ModaVersatilApplication.DTOs.Request
 {
     public class CarrinhoDTORequest
     {
         public int Id { get; set; }
 
-        public int ClienteId { get; set; }
+        public int? ClienteId { get; set; }
 
         public int ProdutoId { get; set; }
 
         public int Quantidade { get; set; }
 
-        public float ValorVenda { get; set; }
+        public float ValorUnitario { get; set; }
 
         public float Total { get; set; }
 
@@ -18,6 +20,6 @@
 
         public int? VendaId { get; set; }
 
-        public string? ClienteTemporarioId { get; set; }
+        public string? ClienteTemporarioId { get; set; }              
     }
 }

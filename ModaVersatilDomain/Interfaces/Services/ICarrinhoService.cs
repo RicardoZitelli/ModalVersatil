@@ -6,7 +6,7 @@ namespace ModaVersatilDomain.Interfaces.Services
     {
         Task AdicionarAsync(Carrinho carrinho);
         Task AlterarAsync(Carrinho carrinho);
-        Task ExcluirAsync(int id);
+        Task ExcluirAsync(int clienteId);
         Task ExcluirProdutoAsync(int clienteId, int produtoId);
         Task<Carrinho> ObterAsync(int id);
         Task<IEnumerable<Carrinho>> ListarAsync();

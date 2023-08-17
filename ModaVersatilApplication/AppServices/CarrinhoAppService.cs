@@ -32,9 +32,9 @@ namespace ModaVersatilApplication.AppServices
             await _carrinhoService.AlterarAsync(model);
         }
 
-        public async Task ExcluirAsync(int id)
+        public async Task ExcluirAsync(int clienteId)
         {
-            await _carrinhoService.ExcluirAsync(id);
+            await _carrinhoService.ExcluirAsync(clienteId);
         }
 
         public async Task ExcluirProdutoAsync(int clienteId, int produtoId)

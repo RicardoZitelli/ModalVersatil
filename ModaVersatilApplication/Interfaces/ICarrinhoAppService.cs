@@ -7,7 +7,7 @@ namespace ModaVersatilApplication.Interfaces
     {
         Task AdicionarAsync(CarrinhoDTORequest carrinho);
         Task AlterarAsync(CarrinhoDTORequest carrinho);
-        Task ExcluirAsync(int id);        
+        Task ExcluirAsync(int clienteId);        
         Task ExcluirProdutoAsync(int clienteId, int produtoId);
         Task<CarrinhoDTOResponse> ObterAsync(int id);
         Task<IEnumerable<CarrinhoDTOResponse>> ListarAsync();

@@ -21,9 +21,9 @@ namespace ModaVersatilDomain.Services
             await UnitOfWork.CarrinhoRepository.AlterarAsync(carrinho);
         }
 
-        public async Task ExcluirAsync(int id)
+        public async Task ExcluirAsync(int clienteId)
         {
-            await UnitOfWork.CarrinhoRepository.ExcluirAsync(id);
+            await UnitOfWork.CarrinhoRepository.ExcluirAsync(clienteId);
         }
 
         public async Task ExcluirProdutoAsync(int clienteId, int produtoId)
