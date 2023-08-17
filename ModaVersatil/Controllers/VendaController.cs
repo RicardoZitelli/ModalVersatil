@@ -71,8 +71,13 @@ namespace ModaVersatil.Controllers
             try
             {
                 await _vendaAppService.AlterarAsync(venda);
+                
+                var tipoVenda = "realizada";
 
-                _logger.LogInformation($"Venda estornada com sucesso. Valor: {venda.Total:N2}");
+                if(venda.Estornado != null)
+                    tipoVenda = (bool)venda.Estornado ? "estornada" : "realizada";
+                
+                _logger.LogInformation($@"Venda { tipoVenda } com sucesso. Valor: R${venda.Total:N2}");
 
                 return Ok();
             }
