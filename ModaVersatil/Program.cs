@@ -15,7 +15,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(c =>
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "ModaVersatilWebAPI", Version = "v1" })
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Moda Versatil WebAPI", Version = "v1" })
 );
     
 new InjetorDependencia(builder.Services, configuration);
