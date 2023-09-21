@@ -1,0 +1,16 @@
+<div *ngIf="tipoProduto">
+    <h2>{{tipoProduto.descricao}}</h2>
+    <div>
+        Id:{{tipoProduto.id}}
+    </div>
+    <div>
+        Descrição:
+        <input [(ngModel)]="tipoProduto.descricao" placeholder="Descrição"/>        
+    </div>
+    <div>
+        Ativo:
+        <input type="checkbox" [(ngModel)]="tipoProduto.ativo" placeholder="Descrição"/>        
+    </div>
+    <button (click)="inserirTipoProduto(tipoProduto)" *ngIf="tipoProduto">Salvar</button>    
+    <button (click)="excluirTipoProduto(tipoProduto)">Excluir</button>
+</div>

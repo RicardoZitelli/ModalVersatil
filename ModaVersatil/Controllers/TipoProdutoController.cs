@@ -22,11 +22,14 @@ namespace ModaVersatil.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task AdicionarTipoProdutoAsync([FromBody] TipoProdutoDTORequest tipoProdutoDTORequest)
+        public async Task<IEnumerable<TipoProdutoDTOResponse>> AdicionarTipoProdutoAsync([FromBody] TipoProdutoDTORequest tipoProdutoDTORequest)
         {
             await _tipoProdutoAppService.AdicionarAsync(tipoProdutoDTORequest);
             
             _logger.LogInformation("Categoria Tipo de Produto adicionado.");
+
+            return await _tipoProdutoAppService.ListarAsync();
+
         }
 
         [HttpPut]
@@ -34,11 +37,13 @@ namespace ModaVersatil.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task AlterarTipoProdutoAsync([FromBody] TipoProdutoDTORequest tipoProdutoDTORequest)
+        public async Task<IEnumerable<TipoProdutoDTOResponse>> AlterarTipoProdutoAsync([FromBody] TipoProdutoDTORequest tipoProdutoDTORequest)
         {
             await _tipoProdutoAppService.AlterarAsync(tipoProdutoDTORequest);
 
             _logger.LogInformation($"Categoria Tipo de Produto {tipoProdutoDTORequest.Id} alterado.");
+
+            return await _tipoProdutoAppService.ListarAsync();
         }
 
         [HttpDelete]
@@ -46,11 +51,13 @@ namespace ModaVersatil.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task ExcluirTipoProdutoAsync([FromRoute] int id)
+        public async Task<IEnumerable<TipoProdutoDTOResponse>> ExcluirTipoProdutoAsync([FromRoute] int id)
         {
             await _tipoProdutoAppService.ExcluirAsync(id);
 
             _logger.LogInformation($"Categoria Tipo de Produto {id} excluído.");
+
+            return await _tipoProdutoAppService.ListarAsync();
         }
 
         [HttpGet]
