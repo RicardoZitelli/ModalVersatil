@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HashidsNet;
+using Microsoft.AspNetCore.Mvc;
 using ModaVersatilApplication.DTOs.Request;
 using ModaVersatilApplication.DTOs.Response;
 using ModaVersatilApplication.Interfaces;
@@ -6,7 +7,7 @@ using ModaVersatilApplication.Interfaces;
 namespace ModaVersatil.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1/[controller]")]
     public class TipoProdutoController : ControllerBase
     {
         private readonly ILogger<TipoProdutoController> _logger;
@@ -67,7 +68,18 @@ namespace ModaVersatil.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<TipoProdutoDTOResponse> ObterTipoProdutoAsync([FromRoute] int id)
         {
+            //Testing library HashidsNet
+            EncriptDecriptHash(id);
+
             return await _tipoProdutoAppService.ObterAsync(id);
+
+            static void EncriptDecriptHash(int id)
+            {
+                var guid = Guid.NewGuid();
+                var hashId = new Hashids(salt: guid.ToString());
+                var hash = hashId.Encode(number: id);
+                var number = hashId.Decode(hash: hash);
+            }
         }
 
         [HttpGet]
