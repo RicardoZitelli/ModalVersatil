@@ -17,24 +17,30 @@ export class EditTipoProdutoComponent implements OnInit{
     
   }
 
-  inserirTipoProduto(tipoProduto: TipoProduto){    
+  alterarTipoProduto(tipoProduto: TipoProduto){    
     if (tipoProduto.id != undefined && tipoProduto.id>0)
       this.tipoProdutoService.alterarTipoProduto(tipoProduto).subscribe((tipoProdutos)=>{
         this.tipoProdutoUpdated.emit(tipoProdutos)
+        this.limparCampos();
       });
     else
       this.tipoProdutoService.adicionarTipoProduto(tipoProduto).subscribe((tipoProdutos)=>{
         this.tipoProdutoUpdated.emit(tipoProdutos);
+        this.limparCampos();
       });      
   }
   
-  excluirTipoProduto(tipoProduto: TipoProduto){
-    if(tipoProduto.id != undefined && tipoProduto.id>0){         
-      this.tipoProdutoService
-        .excluirTipoProduto(tipoProduto.id)
-        .subscribe((tipoProdutos) => {
-          this.tipoProdutoUpdated.emit(tipoProdutos);
-        });
-    }
+  excluirTipoProduto(tipoProduto: TipoProduto){        
+    if(confirm('tem certeza que deseja excluir o tipo do produto?'))
+      if(tipoProduto.id != undefined && tipoProduto.id>0){         
+        this.tipoProdutoService.excluirTipoProduto(tipoProduto.id).subscribe((tipoProdutos) => {
+            this.tipoProdutoUpdated.emit(tipoProdutos);
+            this.limparCampos();
+          });
+      }
+  }
+
+  limparCampos(){
+    this.tipoProduto = new TipoProduto();
   }
 }

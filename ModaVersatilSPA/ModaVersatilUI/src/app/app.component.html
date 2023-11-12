@@ -1,22 +1,3 @@
-<button (click)="initNewTipoProduto()">Criar novo tipo de produto</button>
+<a routerLink="/list-tipo-produto">Ver lista de tipo de produtos</a>
 
-<table>
-  <thead>
-    <th>Id</th>
-    <th>Descrição</th>
-    <th>Ativo</th>
-  </thead>
-  <tbody>
-    <tr *ngFor="let tipoProduto of tipoProdutos">
-      <td>{{tipoProduto.id}}</td>
-      <td>{{tipoProduto.descricao}}</td>
-      <td>{{tipoProduto.ativo}}</td>
-      <td><button (click)="editarTipoProduto(tipoProduto)">Editar</button></td>     
-    </tr>
-  </tbody>
-</table>
-
-<app-edit-tipo-produto 
-  [tipoProduto]="tipoProdutoEdit" 
-  (tipoProdutoUpdated)="atualizarTipoProdutoList($event)"
-></app-edit-tipo-produto>
+<router-outlet></router-outlet>

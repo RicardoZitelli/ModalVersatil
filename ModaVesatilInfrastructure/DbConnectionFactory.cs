@@ -17,9 +17,9 @@ namespace ModaVesatilInfrastructure
 
         public string ObterStringDeConexao()
         {
-            var servidor = "DESKTOP-7EI7KPL";
-            var usuario = default(string);
-            var senha = default(string);
+            var servidor = "Ricardo";
+            var usuario = "sa";
+            var senha = "1Q2w3e4r";
 
             string? connectionString = _configuration.GetConnectionString("DefaultConnection");
 

@@ -1,6 +1,4 @@
 using ModaVersatilIoC;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
 IConfiguration configuration = new ConfigurationBuilder()

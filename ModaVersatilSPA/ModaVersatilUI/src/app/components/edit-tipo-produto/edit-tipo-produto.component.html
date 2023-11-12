@@ -1,16 +1,24 @@
 <div *ngIf="tipoProduto">
     <h2>{{tipoProduto.descricao}}</h2>
+    <div class="col-auto">
+        <label for="id">Id:</label>
+      </div>
     <div>
-        Id:{{tipoProduto.id}}
+        <div class="col-auto">
+            {{tipoProduto.id}}
+        </div>        
     </div>
-    <div>
-        Descrição:
-        <input [(ngModel)]="tipoProduto.descricao" placeholder="Descrição"/>        
+    <div class="form-floating mb-3">        
+        <input [(ngModel)]="tipoProduto.descricao" placeholder="Descrição" class="form-control" id="descricao"/>
+        <label for="descricao">Descrição</label>
     </div>
     <div>
         Ativo:
-        <input type="checkbox" [(ngModel)]="tipoProduto.ativo" placeholder="Descrição"/>        
+        <input type="checkbox" [(ngModel)]="tipoProduto.ativo" />
     </div>
-    <button (click)="inserirTipoProduto(tipoProduto)" *ngIf="tipoProduto">Salvar</button>    
-    <button (click)="excluirTipoProduto(tipoProduto)">Excluir</button>
+    <button (click)="alterarTipoProduto(tipoProduto)" *ngIf="tipoProduto" class="btn btn-success">Salvar</button>    
+    <button (click)="excluirTipoProduto(tipoProduto)" class="btn btn-danger">Excluir</button>
+    <button (click)="limparCampos()" class="btn btn-light">Limpar Campos</button>
 </div>
+
+<router-outlet></router-outlet>

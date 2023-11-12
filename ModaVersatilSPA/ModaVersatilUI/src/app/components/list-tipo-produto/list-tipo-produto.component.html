@@ -1,0 +1,31 @@
+<div><a routerLink="/">Voltar</a></div>
+<p></p>
+
+<button (click)="initNewTipoProduto()" class="btn btn-primary">Criar novo tipo de produto</button>
+<div class="row align-items-start">  
+  <div class="col-md-3">
+    <table class="table">
+      <thead>
+        <th>Id</th>
+        <th>Descrição</th>
+        <th>Ativo</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tipoProduto of tipoProdutos">
+          <td>{{tipoProduto.id}}</td>
+          <td>{{tipoProduto.descricao}}</td>
+          <td><input type="checkbox" [(ngModel)]="tipoProduto.ativo" onclick="return false;"></td>
+          <td><button (click)="editarTipoProduto(tipoProduto)" class="btn btn-warning">Editar</button></td>     
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+
+</div>
+<div class="row col-md-3 g-3 align-items-center">  
+  <app-edit-tipo-produto 
+  [tipoProduto]="tipoProdutoEdit" 
+  (tipoProdutoUpdated)="atualizarTipoProdutoList($event)"
+  ></app-edit-tipo-produto>    
+</div>

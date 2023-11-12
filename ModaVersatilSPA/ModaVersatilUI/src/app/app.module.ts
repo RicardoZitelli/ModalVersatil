@@ -6,15 +6,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EditTipoProdutoComponent } from './components/edit-tipo-produto/edit-tipo-produto.component';
 import { FormsModule } from '@angular/forms';
+import { ListTipoProdutoComponent } from './components/list-tipo-produto/list-tipo-produto.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EditTipoProdutoComponent
+    EditTipoProdutoComponent,
+    ListTipoProdutoComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule,    
     HttpClientModule,
     FormsModule
   ],

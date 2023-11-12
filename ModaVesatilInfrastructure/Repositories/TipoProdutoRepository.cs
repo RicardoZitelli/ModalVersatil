@@ -9,8 +9,7 @@ namespace ModaVesatilInfrastructure.Repositories
     public class TipoProdutoRepository : RepositoryBase, ITipoProdutoRepository
     {
         protected readonly string BaseQuery = @"SELECT  *
-                                                FROM    TipoProdutos
-                                                WHERE   Ativo = @Ativo ";
+                                                FROM    TipoProdutos ";
 
         protected readonly string BaseInsert = @"INSERT INTO TipoProdutos (
                                                         DESCRICAO,
@@ -57,15 +56,15 @@ namespace ModaVesatilInfrastructure.Repositories
         {
             var query = BaseQuery;
 
-            return await Connection.QueryAsync<TipoProduto>(query, new { Ativo = true });
+            return await Connection.QueryAsync<TipoProduto>(query);
         }
     
         public async Task<TipoProduto> ObterAsync(int id)
         {
             var query = $"{BaseQuery}" +
-                        " AND ID = @Id";
+                        " WHERE ID = @Id";
 
-            return await Connection.QueryFirstOrDefaultAsync<TipoProduto>(query, new { Ativo = true, Id = id });
+            return await Connection.QueryFirstOrDefaultAsync<TipoProduto>(query, new { Id = id });
         }
     }
 }
