@@ -16,13 +16,16 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Moda Versatil WebAPI", Version = "v1" })
 );
 
-builder.Services.AddCors(options => options.AddPolicy(name: "AllowOrigin",
-    policy =>
-    {
-        policy.AllowAnyOrigin()
-        .AllowAnyMethod()
-        .AllowAnyHeader();
-    }));
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "AllowAnyOrigin",
+        policy =>
+        {
+            policy.AllowAnyOrigin();
+            policy.AllowAnyMethod();
+            policy.AllowAnyHeader();
+        });
+});
 
 new InjetorDependencia(builder.Services, configuration);
 
@@ -35,7 +38,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("AllowOrigin");
+app.UseCors("AllowAnyOrigin");
 
 app.UseHttpsRedirection();
 

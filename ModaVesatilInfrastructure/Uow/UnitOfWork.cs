@@ -12,10 +12,7 @@ namespace ModaVesatilInfrastructure.Uow
         private IDbTransaction _dbTransaction;
         private bool disposedValue;
 
-        public UnitOfWork(IDbConnection dbConnection)
-        {
-            _connection = dbConnection;           
-        }
+        public UnitOfWork(IDbConnection dbConnection) => _connection = dbConnection;
 
         public ITipoProdutoRepository TipoProdutoRepository => new TipoProdutoRepository(_connection);
 
@@ -26,38 +23,7 @@ namespace ModaVesatilInfrastructure.Uow
         public ICarrinhoRepository CarrinhoRepository => new CarrinhoRepository(_connection);
 
         public IVendaRepository VendaRepository => new VendaRepository(_connection);
-
-        public void BeginTransaction()
-        {
-            _dbTransaction = _connection.BeginTransaction();
-        }
-
-        public void Rollback()
-        {
-            if (_dbTransaction != null)
-                _dbTransaction.Rollback();
-        }
-
-        public void Commit()
-        {
-            try
-            {
-                if (_dbTransaction != null)
-                    _dbTransaction.Commit();
-            }
-            catch (Exception)
-            {
-
-                if (_dbTransaction != null)
-                    _dbTransaction.Rollback();
-            }
-            finally
-            {
-                if (_dbTransaction != null)
-                    _dbTransaction.Dispose();
-            }
-        }
-
+        
         public void Dispose(bool disposing)
         {
             if (!disposedValue)

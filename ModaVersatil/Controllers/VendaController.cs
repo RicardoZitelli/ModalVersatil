@@ -43,8 +43,9 @@ namespace ModaVersatil.Controllers
                 {
                     var carrinho = _mapper.Map<Carrinho>(carrinhoDTOResponse);
                     var carrinhoDTORequest = _mapper.Map<CarrinhoDTORequest>(carrinho);
-
-                    carrinhoDTORequest.VendaId = listaVendaDTOResponse.OrderByDescending(x => x.DataCadastro).FirstOrDefault().Id;                    
+                    
+                    if(listaVendaDTOResponse.Any())
+                        carrinhoDTORequest.VendaId = listaVendaDTOResponse.OrderByDescending(x => x.DataCadastro).FirstOrDefault().Id;                    
                     
                     await _carrinhoAppService.AlterarAsync(carrinhoDTORequest);
 

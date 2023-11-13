@@ -10,9 +10,5 @@ namespace ModaVersatilDomain.Interfaces.UnitOfWork
         ICarrinhoRepository CarrinhoRepository { get; }
         IVendaRepository VendaRepository { get; }
 
-        void Commit();
-        void BeginTransaction();
-        void Rollback();
-
     }
 }

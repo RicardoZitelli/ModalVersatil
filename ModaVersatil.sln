@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModaVesatilInfrastructure",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModaVersatilIoC", "ModaVersatilIoC\ModaVersatilIoC.csproj", "{2CE1FDE1-D6A1-4A32-BA6A-E96A3C3B1D4A}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{7B541A50-EB95-4A90-90E6-DA22762220D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{2CE1FDE1-D6A1-4A32-BA6A-E96A3C3B1D4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CE1FDE1-D6A1-4A32-BA6A-E96A3C3B1D4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CE1FDE1-D6A1-4A32-BA6A-E96A3C3B1D4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B541A50-EB95-4A90-90E6-DA22762220D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B541A50-EB95-4A90-90E6-DA22762220D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B541A50-EB95-4A90-90E6-DA22762220D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B541A50-EB95-4A90-90E6-DA22762220D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
